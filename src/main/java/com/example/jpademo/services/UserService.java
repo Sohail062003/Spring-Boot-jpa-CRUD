@@ -50,6 +50,7 @@ public class UserService {
 
         UserClassSpringBoot user = getById(id);
         user.setName(updatedUser.getName());
+        user.setEmail(updatedUser.getEmail());
 
         return userRepository.save(user);
 
