@@ -43,6 +43,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("user not found by : " + id));
     }
 
+    // update user
     public UserClassSpringBoot updateUser(Long id, UserClassSpringBoot updatedUser) {
         if (id == null || id <=0 ) {
             throw new RuntimeException("Invalid user id");
@@ -56,11 +57,14 @@ public class UserService {
 
     }
 
-
+//    delete user
     public String deleteUser(Long id) {
         userRepository.deleteById(id);
        return "user deleted successfully ";
     }
 
+    public UserClassSpringBoot getUserByEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("user not found"));
+    }
 }
 

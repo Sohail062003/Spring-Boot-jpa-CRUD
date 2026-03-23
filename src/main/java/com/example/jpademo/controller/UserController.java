@@ -75,4 +75,16 @@ public class UserController {
                 null
         ));
     }
+
+    @GetMapping("/get-by-email/{email}")
+    public ResponseEntity<ApiResponse<UserClassSpringBoot>> getUserByEmail(@PathVariable String email) {
+        UserClassSpringBoot user = userService.getUserByEmail(email);
+
+        return ResponseEntity.ok(new ApiResponse<>(
+                "Success",
+                "User find successfully",
+                user
+        ));
+    }
+
 }
